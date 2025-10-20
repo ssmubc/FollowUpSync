@@ -1,0 +1,32 @@
+[
+  {
+    "input": "Meeting notes: We decided to use React for the frontend. John will set up the development environment by Friday. There's a risk that the API might not be ready in time.",
+    "output": {
+      "decisions": [
+        {
+          "text": "Use React for the frontend",
+          "rationale": "Team consensus on technology choice",
+          "owners": []
+        }
+      ],
+      "action_items": [
+        {
+          "title": "Set up development environment",
+          "owner": "John",
+          "due_date": "2024-01-19",
+          "priority": "High",
+          "notes": "Frontend development setup",
+          "source_quote": "John will set up the development environment by Friday"
+        }
+      ],
+      "risks": [
+        {
+          "text": "API might not be ready in time",
+          "severity": "Medium",
+          "mitigation": null
+        }
+      ],
+      "summary_md": "# Meeting Summary\n\n- **Decision**: Use React for frontend\n- **Action**: John to set up dev environment by Friday\n- **Risk**: API timeline uncertainty"
+    }
+  }
+]
