@@ -10,9 +10,38 @@ from core.pipeline import Pipeline
 from core.config import Config
 from core.schema import ExtractionResult
 
-st.set_page_config(page_title="FollowUpSync", page_icon="✅", layout="wide")
-st.title("FollowUpSync — meeting → action")
-st.caption("Convert meeting transcripts into actionable execution plans")
+st.set_page_config(page_title="FollowUpSync", page_icon="🚀", layout="wide")
+
+# Custom CSS for better styling
+st.markdown("""
+<style>
+.main-header {
+    text-align: center;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+.sub-header {
+    text-align: center;
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+.workflow-arrow {
+    text-align: center;
+    font-size: 2rem;
+    margin: 0.5rem 0;
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown('<h1 class="main-header">🚀 FollowUpSync</h1>', unsafe_allow_html=True)
+st.markdown('<div class="workflow-arrow">📝 meetings → 🤖 AI → ✅ actions</div>', unsafe_allow_html=True)
+st.markdown('<p class="sub-header">Transform meeting transcripts into actionable execution plans with smart date parsing</p>', unsafe_allow_html=True)
 
 # Initialize session state
 if 'extraction_result' not in st.session_state:
@@ -164,16 +193,25 @@ if st.session_state.extraction_result:
                     st.success("✅ Artifacts generated!")
                     
                     # Show download links
+                    if Config.is_aws_mode():
+                        # Get content from S3 for download
+                        summary_content = pipeline.storage.get_file_content(result.run_id, "Summary.md")
+                        json_content = pipeline.storage.get_file_content(result.run_id, "ActionItems.json")
+                    else:
+                        # Get content from local files
+                        summary_content = Path(artifacts['summary_md']).read_text()
+                        json_content = Path(artifacts['action_items_json']).read_text()
+                    
                     st.download_button(
                         "📄 Download Summary.md",
-                        data=Path(artifacts['summary_md']).read_text() if not Config.is_aws_mode() else "Check S3",
+                        data=summary_content,
                         file_name=f"Summary_{result.run_id}.md",
                         mime="text/markdown"
                     )
                     
                     st.download_button(
                         "📋 Download ActionItems.json",
-                        data=Path(artifacts['action_items_json']).read_text() if not Config.is_aws_mode() else "Check S3",
+                        data=json_content,
                         file_name=f"ActionItems_{result.run_id}.json",
                         mime="application/json"
                     )
@@ -220,7 +258,8 @@ Decisions made:
 Action items:
 - John will set up the development environment by Friday
 - Sarah needs to create the database schema by next Tuesday
-- Mike will research deployment options this week
+- Mike will research deployment options by Oct 30
+- Anthony will complete cost analysis by Jan 1st
 
 Risks identified:
 - Timeline might be tight for the MVP release
