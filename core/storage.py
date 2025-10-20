@@ -55,3 +55,16 @@ class StorageManager:
             )
         else:
             return f"data/output/{run_id}/{filename}"
+    
+    def get_file_content(self, run_id: str, filename: str) -> str:
+        """Get file content for download in AWS mode"""
+        if self.is_aws:
+            key = f"followupsync/{run_id}/{filename}"
+            try:
+                response = self.s3_client.get_object(Bucket=Config.S3_BUCKET, Key=key)
+                return response['Body'].read().decode('utf-8')
+            except Exception as e:
+                return f"Error reading from S3: {str(e)}"
+        else:
+            path = Path(f"data/output/{run_id}/{filename}")
+            return path.read_text(encoding='utf-8')

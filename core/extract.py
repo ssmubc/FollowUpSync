@@ -1,6 +1,7 @@
 import json
 import re
 from typing import Dict, Any
+from datetime import datetime
 from core.schema import ExtractionResult, Decision, ActionItem, Risk
 from core.config import Config
 
@@ -139,6 +140,27 @@ Return ONLY valid JSON:
             # Fix invalid due_date
             if item_data.get('due_date') == 'YYYY-MM-DD' or not item_data.get('due_date'):
                 item_data['due_date'] = None
+            
+            # Fix only clearly outdated years (2023, 2024) but keep future years (2026+)
+            elif item_data.get('due_date'):
+                date_str = item_data['due_date']
+                current_year = datetime.now().year
+                
+                # Only fix years that are clearly from old training data
+                if date_str.startswith('2023-') or date_str.startswith('2024-'):
+                    item_data['due_date'] = f"{current_year}{date_str[4:]}"
+                # Keep years 2025+ as they're likely intentional future dates
+            
+            # Process relative dates from source_quote or notes (even if due_date exists)
+            source_text = item_data.get('source_quote', '') or item_data.get('notes', '') or item_data.get('title', '')
+            calculated_date = self._parse_relative_date(source_text)
+            if calculated_date:
+                # Override any existing due_date with our calculated one
+                item_data['due_date'] = calculated_date
+            elif not item_data.get('due_date'):
+                # Only keep existing due_date if we couldn't calculate a better one
+                pass
+            
             action_items.append(ActionItem(**item_data))
         
         risks = [Risk(**r) for r in data.get('risks', [])]
@@ -150,3 +172,62 @@ Return ONLY valid JSON:
             risks=risks,
             summary_md=data.get('summary_md', '')
         )
+    
+    def _parse_relative_date(self, text: str) -> str:
+        """Parse relative dates from text and return YYYY-MM-DD format"""
+        from datetime import datetime, timedelta
+        import re
+        
+        if not text:
+            return None
+            
+        text = text.lower()
+        today = datetime.now()
+        
+        # Check for specific dates like "Oct 30", "December 15", etc.
+        month_pattern = r'(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\w*\s+(\d{1,2})'
+        month_match = re.search(month_pattern, text)
+        
+        if month_match:
+            month_abbr = month_match.group(1)
+            day = int(month_match.group(2))
+            
+            # Map month abbreviations
+            months = {
+                'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 'jun': 6,
+                'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12
+            }
+            
+            month = months.get(month_abbr)
+            if month:
+                # Try current year first
+                try:
+                    target_date = datetime(today.year, month, day)
+                    # If date has passed, use next year
+                    if target_date < today:
+                        target_date = datetime(today.year + 1, month, day)
+                    return target_date.strftime('%Y-%m-%d')
+                except ValueError:
+                    pass  # Invalid date
+        
+        # Relative dates - check for various day patterns
+        day_patterns = {
+            'monday': 0, 'tuesday': 1, 'wednesday': 2, 'thursday': 3, 
+            'friday': 4, 'saturday': 5, 'sunday': 6
+        }
+        
+        for day_name, day_num in day_patterns.items():
+            if f'next {day_name}' in text:
+                days_ahead = (day_num - today.weekday()) % 7 + 7
+                return (today + timedelta(days=days_ahead)).strftime('%Y-%m-%d')
+            elif f'by {day_name}' in text:
+                days_ahead = (day_num - today.weekday()) % 7
+                if days_ahead <= 0:
+                    days_ahead += 7  # Next week if day has passed
+                return (today + timedelta(days=days_ahead)).strftime('%Y-%m-%d')
+        if 'end of month' in text:
+            next_month = today.replace(day=28) + timedelta(days=4)
+            last_day = next_month - timedelta(days=next_month.day)
+            return last_day.strftime('%Y-%m-%d')
+        
+        return None
