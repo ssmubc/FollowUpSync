@@ -17,7 +17,7 @@ st.markdown("""
 <style>
 .main-header {
     text-align: center;
-    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #4285f4 0%, #1565c0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -27,21 +27,72 @@ st.markdown("""
 }
 .sub-header {
     text-align: center;
-    color: #666;
+    color: #5f6368;
     font-size: 1.2rem;
     margin-bottom: 2rem;
 }
+.workflow-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f8f9ff 0%, #e8f4fd 100%);
+    border-radius: 16px;
+    border: 1px solid #e3f2fd;
+}
+.workflow-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1rem;
+}
+.workflow-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+.workflow-text {
+    font-size: 0.9rem;
+    color: #1565c0;
+    font-weight: 600;
+}
 .workflow-arrow {
-    text-align: center;
-    font-size: 2rem;
-    margin: 0.5rem 0;
+    font-size: 1.5rem;
+    color: #4285f4;
+    margin: 0 0.5rem;
+}
+.stButton > button[kind="primary"] {
+    background-color: #4285f4 !important;
+    border-color: #4285f4 !important;
+    color: white !important;
+}
+.stButton > button[kind="primary"]:hover {
+    background-color: #3367d6 !important;
+    border-color: #3367d6 !important;
 }
 </style>
 """, unsafe_allow_html=True)
 
 st.markdown('<h1 class="main-header">🚀 FollowUpSync</h1>', unsafe_allow_html=True)
-st.markdown('<div class="workflow-arrow">📝 meetings → 🤖 AI → ✅ actions</div>', unsafe_allow_html=True)
-st.markdown('<p class="sub-header">Transform meeting transcripts into actionable execution plans with smart date parsing</p>', unsafe_allow_html=True)
+st.markdown('''
+<div class="workflow-visual">
+    <div class="workflow-step">
+        <div class="workflow-icon">📝</div>
+        <div class="workflow-text">Upload</div>
+    </div>
+    <div class="workflow-arrow">→</div>
+    <div class="workflow-step">
+        <div class="workflow-icon">🤖</div>
+        <div class="workflow-text">AI Extract</div>
+    </div>
+    <div class="workflow-arrow">→</div>
+    <div class="workflow-step">
+        <div class="workflow-icon">✅</div>
+        <div class="workflow-text">Deliver</div>
+    </div>
+</div>
+''', unsafe_allow_html=True)
+st.markdown('<p class="sub-header">Turn meeting notes into action items with smart scheduling</p>', unsafe_allow_html=True)
 
 # Initialize session state
 if 'extraction_result' not in st.session_state:
@@ -50,7 +101,8 @@ if 'artifacts_saved' not in st.session_state:
     st.session_state.artifacts_saved = False
 
 # Mode selection
-mode = st.radio("Mode", ["Local", "AWS"], index=0)
+mode = st.radio("Mode", ["AWS", "Local"], index=0)
+st.caption("💡 AWS mode: Bedrock Nova AI with smart date parsing | Local mode: Rule-based fallback")
 Config.MODE = "local" if mode == "Local" else "aws"
 
 # Initialize pipeline
@@ -251,9 +303,9 @@ with st.sidebar:
         sample_text = """Meeting Notes - Project Kickoff
         
 Decisions made:
-- We decided to use React for the frontend development
-- Database will be PostgreSQL
-- Deploy on AWS infrastructure
+- Tech team decided to use React for the frontend development
+- Sarah and Mike agreed that database will be PostgreSQL
+- Leadership team decided to deploy on AWS infrastructure
 
 Action items:
 - John will set up the development environment by Friday
@@ -268,12 +320,11 @@ Risks identified:
         
         st.text_area("Sample content (copy this):", value=sample_text, height=300)
     
-    st.subheader("🚀 Quick Start")
+    st.subheader("⚙️ How It Works")
     st.markdown("""
     1. **Paste or upload** a meeting transcript
-    2. **Process** to extract structured data
-    3. **Review** and edit the results
-    4. **Configure** integrations in .env file
-    5. **Send** to Slack/Notion/Jira
-    6. **Download** artifacts
+    2. **Process with AWS Bedrock Nova** - AI extracts structured data
+    3. **Review smart-parsed dates** - "next Tuesday" → 2025-10-28
+    4. **See organized results** - decisions, actions, risks with owners
+    5. **Generate artifacts** - download Summary.md & ActionItems.json
     """)
