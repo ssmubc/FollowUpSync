@@ -1,5 +1,5 @@
 Meeting Notes - Q1 Planning Session
-Date: January 15, 2024
+Date: October 20, 2025
 Attendees: John (PM), Sarah (Dev), Mike (DevOps), Lisa (Design)
 
 DECISIONS MADE:
