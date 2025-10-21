@@ -138,7 +138,7 @@ if st.button("🔄 Process", type="primary"):
 
 # Section 2: Review & Edit
 if st.session_state.extraction_result:
-    st.subheader("2️⃣ Review & Edit")
+    st.subheader("2️⃣ Review Results")
     result = st.session_state.extraction_result
     
     col1, col2, col3 = st.columns(3)
