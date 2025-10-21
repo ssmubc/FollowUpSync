@@ -49,8 +49,8 @@ Add here
 
 ### Core Pipeline
 - **Extract**: Decisions, Action Items, Risks from meeting transcripts
-- **Review**: Editable tables for extracted data
-- **Deliver**: Send to Slack, Notion, Jira via MCP tools
+- **Review**: Tables for the extracted data
+- **Deliver**: Send to Slack and Notion via MCP tools (connection to Jira is under development)
 - **Artifacts**: Generate Summary.md and ActionItems.json
 
 ### Modes
