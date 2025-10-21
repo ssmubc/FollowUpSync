@@ -70,6 +70,21 @@ st.markdown("""
     background-color: #3367d6 !important;
     border-color: #3367d6 !important;
 }
+.footer {
+    text-align: center;
+    padding: 2rem 0 1rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid #e3f2fd;
+    color: #5f6368;
+    font-size: 0.9rem;
+}
+.footer a {
+    color: #4285f4;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -331,3 +346,11 @@ Next meeting: TBD"""
     4. **See organized results** - decisions, actions, risks with owners
     5. **Generate artifacts** - download Summary.md & ActionItems.json
     """)
+
+# Footer
+st.markdown('''
+<div class="footer">
+    <p>🚀 <strong>Developed by <a href="https://www.linkedin.com/in/sharon-cs" target="_blank">Sharon Marfatia</a></strong></p>
+    <p>Built for the AWS AI Agent Global Hackathon | Powered by AWS Bedrock Nova</p>
+</div>
+''', unsafe_allow_html=True)
