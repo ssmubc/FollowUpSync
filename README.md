@@ -2,6 +2,35 @@
 
 Convert meeting transcripts into actionable execution plans. Extract decisions and tasks, then create tasks/post follow-ups in Slack and Notion via MCP tools.
 
+## Table of Contents
+- [URL to Deployed Project](#url-to-deployed-project)
+- [Hackathon Requirements](#hackathon-requirements)
+- [Quick Start](#quick-start-aws-mode---recommended)
+- [Architecture Diagram](#architecture-diagram)
+- [Features](#features)
+- [Configuration](#configuration)
+- [Testing](#testing)
+- [Project Structure](#project-structure)
+- [Troubleshooting](#troubleshooting)
+- [AWS Deployment](#aws-deployment-optional)
+- [License](#license)
+- [Contributing](#contributing)
+- [Author](#author)
+
+## URL to Deployed Project
+
+🌐 **https://followupsync.streamlit.app/** *(Note: Deployed version runs in local mode with sample integrations)*
+
+## Hackathon Requirements
+
+✅ **AWS AI Agent**: Uses Amazon Bedrock Nova Micro via boto3 SDK for intelligent extraction  
+✅ **Autonomous Capabilities**: Independently processes transcripts and delivers to multiple platforms  
+✅ **External Integrations**: MCP FastAPI servers for Slack and Notion connectivity  
+✅ **Reasoning LLM**: Nova Micro performs complex date parsing and task categorization  
+✅ **Architecture Diagram**: Available in repository and submission  
+✅ **Public Repository**: Complete source code with setup instructions  
+✅ **Deployed Project**: URL to the deployed project via Streamlit Cloud and a video demonstrating how to run the application
+
 ## Quick Start (AWS Mode - Recommended)
 
 1. **Install dependencies**:
@@ -47,7 +76,7 @@ For local testing without AWS, set `MODE=local` in `.env` and follow the same st
 
 *FollowUpSync uses AWS Bedrock Nova for AI extraction, S3 for artifact storage, and MCP servers for autonomous integration with Slack and Notion.* 
 
-## 📋 Features
+## Features
 
 ### Core Pipeline
 - **Extract**: Decisions, Action Items, Risks from meeting transcripts
@@ -64,7 +93,7 @@ For local testing without AWS, set `MODE=local` in `.env` and follow the same st
 - **Notion**: Create task pages in database
 - **Jira**: Create issues for action items *(In Development)*
 
-## ⚙️ Configuration
+## Configuration
 
 ### Required Environment Variables
 
@@ -170,7 +199,7 @@ curl -X POST http://localhost:8002/notion_create_task \
   -d '{"database_id": "your-db-id", "title": "Test Task", "body": "Test body"}'
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 followupsync/
@@ -233,9 +262,9 @@ For AWS mode with Lambda MCP servers:
 
 See `aws/deploy_instructions.md` for detailed steps.
 
-## 📄 License
+## License
 
-MIT License - see LICENSE file for details.
+MIT License - see [LICENSE](./LICENSE) file for details.
 
 ## Contributing
 
