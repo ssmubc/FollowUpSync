@@ -43,7 +43,9 @@ For local testing without AWS, set `MODE=local` in `.env` and follow the same st
 
 ## Architecture Diagram
 
-Add here 
+![FollowUpSync Architecture](./FollowUpSyncArchitecture.drawio.png)
+
+*FollowUpSync uses AWS Bedrock Nova for AI extraction, S3 for artifact storage, and MCP servers for autonomous integration with Slack and Notion.* 
 
 ## 📋 Features
 
