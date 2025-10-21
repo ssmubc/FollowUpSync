@@ -300,23 +300,26 @@ if st.session_state.extraction_result:
 with st.sidebar:
     st.subheader("📝 Sample Transcript")
     if st.button("Load Sample"):
-        sample_text = """Meeting Notes - Project Kickoff
+        sample_text = """Meeting Notes - Project Kickoff (Oct 21, 2025)
+Attendees: John, Sarah, Mike, Anthony
         
-Decisions made:
-- Tech team decided to use React for the frontend development
-- Sarah and Mike agreed that database will be PostgreSQL
-- Leadership team decided to deploy on AWS infrastructure
+Key decisions from today:
+- After much debate, tech team went with React (Sarah preferred Vue but majority ruled)
+- Database: PostgreSQL - Sarah and Mike both agreed on this one
+- AWS for deployment - leadership pushed for this despite cost concerns
 
-Action items:
-- John will set up the development environment by Friday
-- Sarah needs to create the database schema by next Tuesday
-- Mike will research deployment options by Oct 30
-- Anthony will complete cost analysis by Jan 1st
+TODOs coming out of this:
+- John: get dev environment ready by end of week (Friday)
+- Sarah: DB schema work, needs to be done by next Tuesday 
+- Mike: look into deployment stuff, deadline Oct 30th
+- Anthony: crunch the numbers on costs, due Jan 1st
 
-Risks identified:
-- Timeline might be tight for the MVP release
-- Need to ensure API compatibility with mobile app
-- Budget constraints for AWS services"""
+Concerns raised:
+- Timeline is super tight for MVP launch. John suggested we add some buffer time and focus on core features first
+- Mobile app integration could be tricky - Mike thinks we should document the API properly and test integration early
+- Need to optimize our cloud spending. Anthony mentioned we should set up cost monitoring and optimize our resource usage
+
+Next meeting: TBD"""
         
         st.text_area("Sample content (copy this):", value=sample_text, height=300)
     
