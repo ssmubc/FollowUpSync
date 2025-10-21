@@ -25,8 +25,8 @@ aws s3api put-bucket-versioning \
 ### 2. Bedrock Model Access
 
 1. Go to AWS Console → Bedrock → Model access
-2. Request access to: `anthropic.claude-3-haiku-20240307-v1:0`
-3. Wait for approval (usually immediate for Haiku)
+2. Ensure access to: `amazon.nova-micro-v1:0` (available by default)
+3. No approval needed - Nova models are immediately accessible
 
 ### 3. IAM Role for Lambda
 
@@ -52,7 +52,7 @@ Create IAM role with these policies:
       "Action": [
         "bedrock:InvokeModel"
       ],
-      "Resource": "arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-3-haiku-20240307-v1:0"
+      "Resource": "arn:aws:bedrock:us-east-1::foundation-model/amazon.nova-micro-v1:0"
     }
   ]
 }

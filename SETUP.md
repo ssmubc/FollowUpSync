@@ -10,10 +10,12 @@ pip install -r requirements.txt
 ### 2. Configure Environment
 ```bash
 # Copy the example environment file
-copy .env.example .env
+cp .env.example .env  # Unix/Mac
+copy .env.example .env  # Windows
 
-# Edit .env with your API tokens (optional for basic testing)
-# You can test the extraction without any API tokens
+# Edit .env with your settings:
+# MODE=aws (for Bedrock) or MODE=local (for testing)
+# Add API tokens for integrations (optional for basic testing)
 ```
 
 ### 3. Test the Pipeline

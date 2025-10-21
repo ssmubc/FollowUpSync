@@ -22,13 +22,18 @@ This project requires API tokens for Slack, Notion, and AWS services. **NEVER co
 
 ```bash
 # Never commit real values - use .env file
+MODE=aws  # or 'local'
 SLACK_BOT_TOKEN=xoxb-your-token-here
+SLACK_DEFAULT_CHANNEL=#your-channel
 NOTION_TOKEN=secret_your-token-here
 NOTION_DATABASE_ID=your-database-id-here
+BEDROCK_REGION=us-east-1
+BEDROCK_MODEL_ID=amazon.nova-micro-v1:0
+S3_BUCKET=your-bucket-name
 ```
 
 ### 🔍 Reporting Security Issues
 
-If you find a security vulnerability, please email: [your-email@example.com]
+If you find a security vulnerability, please contact: [@ssmubc](https://github.com/ssmubc)
 
 **Do not** create public GitHub issues for security vulnerabilities.
