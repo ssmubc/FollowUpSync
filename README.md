@@ -20,8 +20,8 @@ Convert meeting transcripts into actionable execution plans. Extract decisions a
 
 ## Demo Video
 
-**Public Access Link to the Demo Video:**
-https://drive.google.com/file/d/1KQczyus1zABMdyiVenltd3tcH66stmd1/view?usp=sharing
+**Public Access Link to the Demo Video (YouTube Link):**
+https://www.youtube.com/watch?v=UdmpuyNKzrE
 
 <video controls src="https://private-user-images.githubusercontent.com/97367319/504031197-42744ea2-3e90-4e5b-b957-63428794b346.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjExMTQ1MjEsIm5iZiI6MTc2MTExNDIyMSwicGF0aCI6Ii85NzM2NzMxOS81MDQwMzExOTctNDI3NDRlYTItM2U5MC00ZTViLWI5NTctNjM0Mjg3OTRiMzQ2Lm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEwMjIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMDIyVDA2MjM0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBlNDFhMTNhNmI1YTExNjZkODYzNzk1ZTJmYzBmMjA5OGQ2ODU5MGZlODAwYTMwMjIyNDY1NTI2ZWJlZTkyZDQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.v--VwIEl4e-f9Wfb0tQnh38uhozraPkti-LohHPhEFU" title="[REPLACE_WITH_YOUR_VIDEO_URL_FROM_ISSUE]"></video>
 
