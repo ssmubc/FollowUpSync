@@ -8,7 +8,7 @@ class Config:
     
     # Bedrock
     BEDROCK_REGION = os.getenv("BEDROCK_REGION", "us-east-1")
-    BEDROCK_MODEL_ID = os.getenv("BEDROCK_MODEL_ID", "anthropic.claude-haiku-4-5-20251001-v1:0")
+    BEDROCK_MODEL_ID = os.getenv("BEDROCK_MODEL_ID", "amazon.nova-micro-v1:0")
     
     # Slack
     SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
