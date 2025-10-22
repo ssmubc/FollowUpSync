@@ -98,10 +98,10 @@ For local testing without AWS, set `MODE=local` in `.env` and follow the same st
 
 ### Modes
 - **Local Mode**: MCP servers on localhost, files in `data/`
-- **AWS Mode**: Lambda MCP servers, S3 storage, Bedrock extraction
+- **AWS Mode**: MCP servers on localhost, S3 storage, Bedrock extraction
 
 ### Integrations
-- **Slack**: Post summary + threaded action items
+- **Slack**: Post summary + threaded action items + due dates
 - **Notion**: Create task pages in database
 - **Jira**: Create issues for action items *(In Development)*
 
@@ -129,7 +129,7 @@ S3_BUCKET=your-bucket-name
 
 ### Setup Instructions
 
-#### Slack Setup (Detailed)
+### Slack Setup (Detailed)
 
 #### Step 1: Create Slack Workspace
 1. Go to https://slack.com/get-started#/createnew
@@ -178,7 +178,7 @@ S3_BUCKET=your-bucket-name
 5. Copy database ID from URL (32 characters)
 6. Add to `.env`: `NOTION_DATABASE_ID=your-database-id`
 
-#### AWS Setup (Required for AWS Mode)
+### AWS Setup (Required for AWS Mode)
 1. Configure AWS credentials (`aws configure`)
 2. Create S3 bucket for artifacts
 3. Enable Bedrock model access in AWS console
@@ -263,16 +263,14 @@ followupsync/
 - MCP server logs appear in their respective terminals
 - Check `data/output/<run_id>/log.txt` for pipeline logs
 
-## AWS Deployment (Optional)
+## AWS Deployment (Future Enhancement)
 
-For AWS mode with Lambda MCP servers:
+*This is a planned future phase for the application:*
 
 1. Package MCP servers as Lambda functions
 2. Create Function URLs or API Gateway endpoints
 3. Update MCP client URLs in config
-4. Deploy with proper IAM roles for S3 and Bedrock access
-
-See `aws/deploy_instructions.md` for detailed steps.
+4. Deploy with IAM roles for S3 and Bedrock access
 
 ## License
 
