@@ -61,23 +61,36 @@ https://drive.google.com/file/d/1KQczyus1zABMdyiVenltd3tcH66stmd1/view?usp=shari
    # Edit .env: Set MODE=aws and add your API tokens
    ```
 
-4. **Start MCP servers** (in separate terminals):
+4. **Test the pipeline** (optional):
+   ```bash
+   python test_pipeline.py
+   ```
+
+5. **Start the application**:
+   
+   **Option A: Use startup script (Windows)**
+   ```bash
+   start_local.bat
+   ```
+   
+   **Option B: Manual startup** (in separate terminals)
    ```bash
    # Terminal 1 - Slack MCP
    python mcp/slack_server.py
    
    # Terminal 2 - Notion MCP  
    python mcp/notion_server.py
-   ```
-
-5. **Run the app**:
-   ```bash
+   
+   # Terminal 3 - Main App
    streamlit run app/streamlit_app.py
    ```
 
 6. **Test with sample data**:
-   - Use the sample transcript in the sidebar
-   - Or upload `data/input/sample.txt`
+   - Open http://localhost:8501 in your browser
+   - Click "Load Sample" in the sidebar
+   - Copy the sample text to the main input area
+   - Click "🔄 Process"
+   - Review extracted data and click "💾 Generate Artifacts"
 
 ### Local Mode (Alternative)
 For local testing without AWS, set `MODE=local` in `.env` and follow the same steps.
@@ -242,12 +255,18 @@ followupsync/
 ### Common Issues
 
 **"Module not found" errors**:
+- Run `pip install -r requirements.txt`
 - Ensure you're running from the project root
 - Check Python path in streamlit_app.py
 
 **MCP servers not responding**:
-- Verify servers are running on correct ports (8001, 8002, 8003)
+- Check ports 8001, 8002, 8003 are available
+- Verify servers are running on correct ports
 - Check environment variables are set
+
+**No extractions found**:
+- This is normal with local mode - it looks for keywords like "decided", "action:", "risk"
+- Switch to AWS mode for better extraction with Nova Micro
 
 **Slack/Notion integration fails**:
 - Verify API tokens in .env
