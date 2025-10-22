@@ -3,6 +3,7 @@
 Convert meeting transcripts into actionable execution plans. Extract decisions and tasks, then create tasks/post follow-ups in Slack and Notion via MCP tools.
 
 ## Table of Contents
+- [Demo Video](#demo-video)
 - [URL to Deployed Project](#url-to-deployed-project)
 - [Hackathon Requirements](#hackathon-requirements)
 - [Quick Start](#quick-start-aws-mode---recommended)
@@ -16,6 +17,17 @@ Convert meeting transcripts into actionable execution plans. Extract decisions a
 - [License](#license)
 - [Contributing](#contributing)
 - [Author](#author)
+
+## Demo Video
+
+**Public Access Link to the Demo Video:**
+https://drive.google.com/file/d/1KQczyus1zABMdyiVenltd3tcH66stmd1/view?usp=sharing
+
+<video controls src="https://private-user-images.githubusercontent.com/97367319/504031197-42744ea2-3e90-4e5b-b957-63428794b346.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjExMTQ1MjEsIm5iZiI6MTc2MTExNDIyMSwicGF0aCI6Ii85NzM2NzMxOS81MDQwMzExOTctNDI3NDRlYTItM2U5MC00ZTViLWI5NTctNjM0Mjg3OTRiMzQ2Lm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEwMjIlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMDIyVDA2MjM0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBlNDFhMTNhNmI1YTExNjZkODYzNzk1ZTJmYzBmMjA5OGQ2ODU5MGZlODAwYTMwMjIyNDY1NTI2ZWJlZTkyZDQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.v--VwIEl4e-f9Wfb0tQnh38uhozraPkti-LohHPhEFU" title="[REPLACE_WITH_YOUR_VIDEO_URL_FROM_ISSUE]"></video>
+
+*3-minute walkthrough showing AWS Bedrock Nova Micro extraction, Slack integration, Notion task creation, and artifact generation.*
+
+- [Local File of the Demo Video](./demo_video/FollowUpSyncDemo.mp4)
 
 ## URL to Deployed Project
 
@@ -276,7 +288,7 @@ MIT License - see [LICENSE](./LICENSE) file for details.
 
 ---
 
-## 👤 **Author**
+## **Author**
 
 **Sharon Marfatia** - Built for the AWS AI Agent Global Hackathon
 
