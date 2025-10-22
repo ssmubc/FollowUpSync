@@ -245,9 +245,14 @@ followupsync/
 │   ├── extractor_system.txt      # Bedrock system prompt
 │   └── extractor_fewshots.json   # Few-shot examples
 ├── data/
-│   ├── input/                    # Transcripts
+│   ├── input/
+│   │   └── sample.txt            # Sample transcript
 │   └── output/                   # Generated artifacts
-└── requirements.txt
+├── .env.example                  # Environment template
+├── test_pipeline.py              # Test script
+├── start_local.bat               # Windows startup script
+├── start_local.sh                # Unix startup script
+└── requirements.txt              # Python dependencies
 ```
 
 ## Troubleshooting
